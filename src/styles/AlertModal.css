@@ -1,0 +1,54 @@
+.alert-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.alert-modal {
+  background: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+  animation: fadeIn 0.3s ease-in-out;
+  min-width: 260px;
+}
+
+.alert-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Warna tema berdasarkan tipe */
+.alert-success {
+  border-left: 6px solid #28a745;
+}
+.alert-error {
+  border-left: 6px solid #dc3545;
+}
+.alert-warning {
+  border-left: 6px solid #ffc107;
+}
+.alert-info {
+  border-left: 6px solid #17a2b8;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

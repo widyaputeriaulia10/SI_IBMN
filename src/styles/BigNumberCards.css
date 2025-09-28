@@ -1,0 +1,27 @@
+.big-number-cards {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.big-card {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.big-card p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.big-card h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin: 0;
+}
