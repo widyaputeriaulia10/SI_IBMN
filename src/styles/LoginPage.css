@@ -106,3 +106,38 @@
   right: 230px;
   top: 80px;
 }
+
+
+/* bungkus khusus password agar ikon bisa diposisikan di dalam input */
+.password-field {
+  position: relative;
+  width: 100%;
+}
+
+/* kasih ruang di kanan untuk ikon */
+.password-field .login-input {
+  padding-right: 44px;
+}
+
+/* tombol ikon mata */
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px;
+  color: #64748b; /* slate-500 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px; /* ukuran ikon */
+}
+
+.toggle-password:hover { color: #111827; } /* slate-900 */
+.toggle-password:focus-visible {
+  outline: 2px solid rgba(16, 185, 129, .45); /* hijau lembut */
+  border-radius: 6px;
+}

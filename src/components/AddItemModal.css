@@ -1,0 +1,96 @@
+/* Overlay & card */
+.af-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: grid;
+  place-items: center;
+  z-index: 50;
+  padding: 1rem;
+}
+.af-card {
+  background: #fff;
+  width: min(860px, 100%);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  padding: 1rem 1rem 0.75rem;
+}
+.af-head h3 {
+  margin: 0.25rem 0 1rem;
+  font-size: 1.5rem;
+}
+
+/* Grid form */
+.af-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem 0.9rem;
+}
+@media (max-width: 720px) {
+  .af-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Field */
+.af-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.af-label {
+  font-weight: 600;
+}
+.af-req {
+  color: #dc2626;
+  margin-left: 0.15rem;
+}
+.af-input {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+  font-size: 0.98rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.af-input:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+.af-hint {
+  color: #6b7280;
+  font-size: 0.82rem;
+}
+.af-error {
+  color: #dc2626;
+  font-size: 0.84rem;
+}
+
+/* Actions */
+.af-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.af-btn {
+  padding: 0.55rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-weight: 700;
+  cursor: pointer;
+}
+.af-btn:hover {
+  background: #f3f4f6;
+}
+.af-primary {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #fff;
+}
+.af-primary[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

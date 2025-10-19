@@ -1,7 +1,7 @@
 // import React from "react";
 import React, { useState, useEffect } from "react";
 import * as XLSX from "xlsx";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar";
 import ChartAnggaran from "../components/charts/ChartPengadaanBarang";
 import ChartBarangPerJenis from "../components/charts/ChartBarangPerJenis";
 import ChartBarangPerTipe from "../components/charts/ChartBarangPerTipe";

@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from "react";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/Sidebar";
 
 // import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";

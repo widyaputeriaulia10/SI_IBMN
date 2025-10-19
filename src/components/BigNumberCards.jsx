@@ -53,35 +53,27 @@ const BigNumberCards = () => {
   const [tahunTerbaru, setTahunTerbaru] = useState(0);
 
   useEffect(() => {
-    fetch("/data/all_data_ibmn_2.xlsx") // letakkan file ini di /public/data/
-      .then((res) => res.arrayBuffer())
-      .then((buffer) => {
-        const workbook = XLSX.read(buffer, { type: "array" });
-        const sheet = workbook.Sheets[workbook.SheetNames[0]];
-        const data = XLSX.utils.sheet_to_json(sheet);
+    let aborted = false;
 
-        // Hitung total barang
-        const total = data.reduce(
-          (sum, row) => sum + (Number(row["Jumlah_Barang"]) || 0),
-          0
-        );
-        setTotalBarang(total);
-
-        // Hitung jumlah ruang unik
-        const ruangSet = new Set(
-          data.map((row) => row["Nama_Ruangan"]).filter(Boolean)
-        );
-        setJumlahRuang(ruangSet.size);
-
-        const tahunList = data
-          .map((row) => Number(row["Tahun_Perolehan"]))
-          .filter((tahun) => !isNaN(tahun));
-        const maxTahun = Math.max(...tahunList);
-        setTahunTerbaru(maxTahun);
+    // Pakai full URL biar gak bentrok sama proxy Vite-mu yang /api ke ThingWorx
+    fetch("/api/inventaris/stats")
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
       })
-      .catch((err) => console.error("Gagal memuat data:", err));
-  }, []);
+      .then(({ Total_Barang, Jumlah_Ruangan, Tahun_Terbaru }) => {
+        if (aborted) return;
 
+        setTotalBarang(Number(Total_Barang) || 0);
+        setJumlahRuang(Number(Jumlah_Ruangan) || 0);
+        setTahunTerbaru(Tahun_Terbaru === null || Tahun_Terbaru === undefined ? null : Number(Tahun_Terbaru));
+      })
+      .catch(err => console.error("Gagal memuat stats:", err));
+
+    return () => {
+      aborted = true;
+    };
+  }, []);
   return (
     <div style={styles.container}>
       <div style={styles.card}>

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
-import DashboardPage from "./DashboardPage";
+// import DashboardPage from "./DashboardPage";
 import ChartTrendBarang from "../components/charts/ChartTrendBarang";
 import ChartAnggaran from "../components/charts/ChartPengadaanBarang";
 
@@ -40,14 +40,7 @@ const LandingPage = () => {
       <section className="hero-section">
         <div className="hero-left">
           <h1>Sistem Informasi Inventaris Barang Milik Negara</h1>
-          <p>
-            Aplikasi internal untuk mendukung pengelolaan aset secara efisien
-            dan transparan di lingkungan Fakultas Sains dan Teknologi,
-            Universitas Islam Negeri Sunan Gunung Djati Bandung. Aplikasi ini
-            dikembangkan untuk memudahkan sivitas akademika Fakultas Sains dan
-            Teknologi dalam melakukan pencatatan, pelacakan, dan pelaporan
-            barang milik negara secara terpusat dan terintegrasi.
-          </p>
+          <p>Aplikasi internal untuk mendukung pengelolaan aset secara efisien dan transparan di lingkungan Fakultas Sains dan Teknologi, Universitas Islam Negeri Sunan Gunung Djati Bandung. Aplikasi ini dikembangkan untuk memudahkan sivitas akademika Fakultas Sains dan Teknologi dalam melakukan pencatatan, pelacakan, dan pelaporan barang milik negara secara terpusat dan terintegrasi.</p>
           <div className="hero-buttons">
             <button className="btn-masuk" onClick={() => navigate("/login")}>
               Masuk ke Sistem
@@ -93,10 +86,7 @@ const LandingPage = () => {
           {/* Tempatkan chart di sini jika sudah ada */}
           <div className="summary-chart">
             <h3>Summary Data IBMN</h3>
-            <BigNumberCards
-              totalBarang={totalBarang}
-              jumlahRuang={jumlahRuang}
-            />
+            <BigNumberCards />
             <div className="summary-chart" style={{ width: "100%" }}>
               {/* <h3>Summary Data IBMN</h3> */}
               <div style={styles.container}>
@@ -127,9 +117,7 @@ const LandingPage = () => {
 
       <footer className="landing-footer">
         <div className="footer-info">
-          <span>
-            Fakultas Sains dan Teknologi - UIN Sunan Gunung Djati Bandung
-          </span>
+          <span>Fakultas Sains dan Teknologi - UIN Sunan Gunung Djati Bandung</span>
           <span>Jl. A.H. Nasution No.105, Bandung</span>
           <span> Kontak: (022) 7800525 | Email: fst@uinsgd.ac.id</span>
         </div>
@@ -143,18 +131,31 @@ const LandingPage = () => {
 };
 const styles = {
   container: {
-    display: "flex",
-    gap: "2rem",
-    marginBottom: "2rem",
-    flexWrap: "wrap",
+    // display: "flex",
+    // // gap: "2rem",
+    // marginBottom: "2rem",
+    // // flexWrap: "wrap",
+
+    display: "grid",
+    gap: 16,
+    gridTemplateColumns: "repeat(2, minmax(420px, 1fr))", // 2 kolom stabil
+    alignItems: "start",
+    maxWidth: 1400, // biar nggak melebar sampai full ultra-wide
+    marginInline: "auto",
   },
   card: {
-    flex: 1,
-    backgroundColor: "#ffffff",
-    borderRadius: "12px",
-    padding: "1.5rem 2rem",
-    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.05)",
-    textAlign: "center",
+    // flex: 1,
+    // backgroundColor: "#ffffff",
+    // borderRadius: "12px",
+    // padding: "1.5rem 2rem",
+    // boxShadow: "0 2px 8px rgba(0, 0, 0, 0.05)",
+    // textAlign: "center",
+
+    background: "#fff",
+    borderRadius: 12,
+    boxShadow: "0 6px 20px rgba(0,0,0,.06)",
+    padding: 16,
+    boxSizing: "border-box",
   },
   label: {
     fontSize: "1.1rem",
