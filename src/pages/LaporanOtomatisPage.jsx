@@ -7,6 +7,7 @@ import { FaTrash } from "react-icons/fa";
 
 import PaginationBarang from "../components/pagination/Pagination";
 import AddItemModalExport from "../components/AddItemModalExport";
+import ExportExcelButton from "../components/ExportExcelButton";
 let DEFAULT_PAGE_SIZE = 10;
 const PageSizes = [10, 25, 50];
 
@@ -344,6 +345,10 @@ const LaporanOtomatisPage = () => {
     setModalOpen(false);
   };
 
+  useEffect(() => {
+    console.log("filteredData", filteredData.slice(0, 3));
+  }, [filteredData]);
+
   return (
     <div className="laporan-page">
       <Sidebar />
@@ -390,6 +395,7 @@ const LaporanOtomatisPage = () => {
                 </option>
               ))}
             </select>
+            <ExportExcelButton data={filteredData} fileName="data-barang.xlsx" />
           </div>
 
           <div className="button_groups">

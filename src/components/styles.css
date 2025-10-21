@@ -1,0 +1,23 @@
+/* styles.css */
+.btn-export {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 0.875rem;
+  border-radius: 6px;
+}
+.btn-export:hover {
+  color: #eaeaea;
+} /* emerald-800 */
+.btn-export:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.45);
+}
+.btn-export svg {
+  width: 20px;
+  height: 20px;
+}

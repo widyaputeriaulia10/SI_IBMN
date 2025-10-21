@@ -58,18 +58,20 @@ const ChartAnggaran = () => {
         const data = {
           labels: tahunList,
           datasets: [
+            // {
+            //   type: "line",
+            //   label: "Pertumbuhan (%)",
+            //   data: growthList,
+            //   borderColor: "#FEBF63",
+            //   backgroundColor: "#FEBF63",
+            //   yAxisID: "y2",
+            // },
             {
               type: "line",
-              label: "Pertumbuhan (%)",
-              data: growthList,
-              borderColor: "#FEBF63",
-              backgroundColor: "#FEBF63",
-              yAxisID: "y2",
-            },
-            {
-              type: "bar",
               label: "Total Barang",
               data: totalList,
+                 borderColor: "#006733",
+
               backgroundColor: "#006733",
               yAxisID: "y",
             },
@@ -157,12 +159,12 @@ const ChartAnggaran = () => {
         beginAtZero: true,
         title: { display: true, text: "Total Barang" },
       },
-      y2: {
-        beginAtZero: true,
-        position: "right",
-        title: { display: true, text: "Pertumbuhan (%)" },
-        grid: { drawOnChartArea: false },
-      },
+      // y2: {
+      //   beginAtZero: true,
+      //   position: "right",
+      //   title: { display: true, text: "Pertumbuhan (%)" },
+      //   grid: { drawOnChartArea: false },
+      // },
     },
   };
 
@@ -195,8 +197,8 @@ const ChartAnggaran = () => {
           }}
           onMouseOver={e => (e.currentTarget.style.backgroundColor = "#006733")}
           onMouseOut={e => (e.currentTarget.style.backgroundColor = "#007E3A")}
-          onMouseEnter={() => setShowTooltip(true)}
-          onMouseLeave={() => setShowTooltip(false)}
+          // onMouseEnter={() => setShowTooltip(true)}
+          // onMouseLeave={() => setShowTooltip(false)}
           title="Cetak Gambar" // jika ingin tooltip bawaan browser
         >
           🖨️

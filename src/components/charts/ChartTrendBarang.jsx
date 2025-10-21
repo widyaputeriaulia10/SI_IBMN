@@ -246,14 +246,14 @@ const ChartTrendBarang = () => {
           }}
           onMouseOver={e => (e.currentTarget.style.backgroundColor = "#006733")}
           onMouseOut={e => (e.currentTarget.style.backgroundColor = "#007E3A")}
-          onMouseEnter={() => setShowTooltip(true)}
-          onMouseLeave={() => setShowTooltip(false)}
+          // onMouseEnter={() => setShowTooltip(true)}
+          // onMouseLeave={() => setShowTooltip(false)}
           title="Cetak Gambar" // jika ingin tooltip bawaan browser
         >
           🖨️
         </button>
       </div>
-      <div style={{ position: "relative", width: "100%", height: 420 }}>{chartData ? <Line data={chartData} options={options} /> : <p>Loading chart...</p>}</div>{" "}
+      <div style={{ position: "relative", width: "100%", height: 420 }}>{chartData ? <Line ref={chartRef}  data={chartData} options={options} /> : <p>Loading chart...</p>}</div>{" "}
     </div>
   );
 };

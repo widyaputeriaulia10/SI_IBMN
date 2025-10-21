@@ -85,9 +85,9 @@ const LoginPage = () => {
           </button>
         </form>
 
-        <p className="login-note">
+        {/* <p className="login-note">
           Belum punya akun? <a href="#">Hubungi admin</a>
-        </p>
+        </p> */}
       </div>
 
       <div className="img-container">
