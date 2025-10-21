@@ -4,8 +4,6 @@ import "../styles/LaporanOtomatisPage.css"; // kamu bisa buat file CSS-nya juga
 import Sidebar from "../components/Sidebar";
 import { useMemo } from "react";
 import { FaTrash } from "react-icons/fa";
-import jsPDF from "jspdf";
-import "jspdf-autotable";
 
 import PaginationBarang from "../components/pagination/Pagination";
 import AddItemModalExport from "../components/AddItemModalExport";
@@ -24,58 +22,12 @@ const LaporanOtomatisPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
 
-  const [editItem, setEditItem] = useState(null);
-  const [isModalOpen, setModalOpen] = useState(false);
-  const handlePrintPDF = () => {
-    const doc = new jsPDF("l", "mm", "a4");
-    doc.setFontSize(16);
-    doc.text("Laporan Inventaris Otomatis", 14, 15);
+  const [changes, setChanges] = useState([]);
 
-    const tableColumn = [
-      "No",
-      "Kode Barang",
-      "Nama Barang",
-      "NUP",
-      "Nama Ruangan",
-      "Merk/Tipe",
-      "Tahun Pengadaan", // ✅ disamakan
-      "Penguasaan",
-      "Jumlah Barang",
-      "Kondisi",
-    ];
+  const [isConfirmOpen, setConfirmOpen] = useState(false);
 
-    const tableRows = filteredData.map((item, index) => [
-      index + 1,
-      item["Kode_Barang"],
-      item["Nama_Barang"],
-      item["NUP"],
-      item["Nama Ruangan"],
-      item["Merk_Tipe"],
-      item["Tahun Pengadaan"], // ✅ disamakan
-      item["Penguasaan"],
-      item["Jumlah_Barang"],
-      item["Keterangan"],
-    ]);
-
-    if (tableRows.length === 0) {
-      alert("Tidak ada data untuk dicetak!");
-      return;
-    }
-
-    doc.autoTable({
-      head: [tableColumn],
-      body: tableRows,
-      startY: 25,
-      styles: { fontSize: 8 },
-      headStyles: { fillColor: [0, 126, 58] },
-    });
-
-    const date = new Date().toLocaleDateString("id-ID");
-    doc.text(`Dicetak pada: ${date}`, 14, doc.lastAutoTable.finalY + 10);
-
-    doc.save(`Laporan_IBM_${date}.pdf`);
-  };
-
+  const baselineRef = useRef(new Map());
+  const changesMap = useMemo(() => new Map(changes.map(c => [c.id, c])), [changes]);
   //  currentTableData untuk ini
   //  <tbody>
   //         {currentTableData.map(item => {
@@ -440,35 +392,53 @@ const LaporanOtomatisPage = () => {
             </select>
           </div>
 
-          <button
-            onClick={() => {
-              setEditItem(null);
-              setModalOpen(true);
-            }}
-            style={{
-              backgroundColor: "#007e3a",
-              color: "white",
-              border: "none",
-              padding: "0.5rem 1rem",
-              borderRadius: "6px",
-              cursor: "pointer",
-            }}
-          >
-            + Tambah Barang
-          </button>
-          <button
-            onClick={handlePrintPDF}
-            style={{
-              backgroundColor: "#0056b3",
-              color: "white",
-              border: "none",
-              padding: "0.5rem 1rem",
-              borderRadius: "6px",
-              cursor: "pointer",
-            }}
-          >
-            Cetak Laporan (PDF)
-          </button>
+          <div className="button_groups">
+            <button
+              onClick={() => {
+                // setEditItem(null);
+                setModalOpen(true);
+              }}
+              style={{
+                backgroundColor: "#007e3a",
+                color: "white",
+                border: "none",
+                padding: "0.5rem 1rem",
+                borderRadius: "6px",
+                cursor: "pointer",
+              }}
+            >
+              + Tambah Barang
+            </button>
+
+            {changes.length > 0 && (
+              <button
+                onClick={() => setConfirmOpen(true)}
+                style={{
+                  backgroundColor: "#EAAA34",
+                  color: "white",
+                  border: "none",
+                  padding: "0.5rem 1rem",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                }}
+              >
+                Simpan Perubahan
+              </button>
+            )}
+
+            <div className="filters-right">
+              <label className="rows-per-page">
+                Rows per page:&nbsp;
+                <select value={pageSize} onChange={e => setPageSize(Number(e.target.value))}>
+                  {PageSizes.map(n => (
+                    <option key={n} value={n}>
+                      {n}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </div>
         </div>
 
         <table className="laporan-table">

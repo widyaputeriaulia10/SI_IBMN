@@ -117,10 +117,8 @@ const LandingPage = () => {
 
       <footer className="landing-footer">
         <div className="footer-info">
-          <span>
-            Fakultas Sains dan Teknologi - UIN Sunan Gunung Djati Bandung
-          </span>
-          <span> Jl. A.H. Nasution No.105, Bandung</span>
+          <span>Fakultas Sains dan Teknologi - UIN Sunan Gunung Djati Bandung</span>
+          <span>Jl. A.H. Nasution No.105, Bandung</span>
           <span> Kontak: (022) 7800525 | Email: fst@uinsgd.ac.id</span>
         </div>
         <div className="footer-bottom">

@@ -17,7 +17,7 @@ const ChartTrendBarang = () => {
       const base64 = chartRef.current.toBase64Image();
       const link = document.createElement("a");
       link.href = base64;
-      link.download = "chart-trend.png";
+      link.download = "chart-barang-pertipe.png";
       link.click();
     }
   };
