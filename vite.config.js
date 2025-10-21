@@ -10,24 +10,24 @@ export default defineConfig({
     port: 5173, // sesuaikan
     // Izinkan host dari Cloudflare Tunnel
     // Coba wildcard dulu:
-    allowedHosts: [".trycloudflare.com"],
+    // allowedHosts: [".trycloudflare.com"],
     // Kalau versimu tidak terima wildcard, tulis domain persis:
     // allowedHosts: ['focused-game-nightlife-untitled.trycloudflare.com'],
 
     // HMR lewat HTTPS/tunnel (sering perlu agar live reload jalan mulus):
 
-    hmr: {
-      protocol: "wss",
-      host: "https://electric-epa-tomorrow-peninsula.trycloudflare.com/", // ganti sesuai URL yang keluar
-      clientPort: 443,
-    },
+    // hmr: {
+    //   protocol: "wss",
+    //   host: "https://electric-epa-tomorrow-peninsula.trycloudflare.com/", // ganti sesuai URL yang keluar
+    //   clientPort: 443,
+    // },
     proxy: {
       "/auth": {
-        target: "https://fact-spatial-quickly-humanities.trycloudflare.com/",
+        target: "http://localhost:4000",
         changeOrigin: true,
       },
       "/api": {
-        target: "https://fact-spatial-quickly-humanities.trycloudflare.com/",
+        target: "http://localhost:4000",
         changeOrigin: true,
       },
     },

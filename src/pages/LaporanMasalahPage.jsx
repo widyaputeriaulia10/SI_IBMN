@@ -50,7 +50,7 @@ const LaporanMasalahPage = () => {
 
   // --- fetch user (cek admin) ---
   useEffect(() => {
-    fetch("/api/me", { credentials: "include" })
+    fetch("/auth/me", { credentials: "include" })
       .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
       .then(json => setMe(json))
       .catch(() => {}); // diam saja kalau gagal, default non-admin
