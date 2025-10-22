@@ -178,7 +178,7 @@ const ChartAnggaran = () => {
           marginBottom: "1rem",
         }}
       >
-        <h3>📦 Chart Pengadaan Barang Pertahun dan Pertumbuhannya</h3>
+        <h3>📦 Chart Pengadaan Barang Pertahun</h3>
         <button
           onClick={handleExportPNG}
           style={{

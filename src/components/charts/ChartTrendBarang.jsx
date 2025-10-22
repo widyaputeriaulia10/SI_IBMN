@@ -227,7 +227,7 @@ const ChartTrendBarang = () => {
           marginBottom: "1rem",
         }}
       >
-        <h3>📈 Trend Jumlah Barang per Jenis per Tahun</h3>
+        <h3>📈 Trend Jumlah Barang per Lantai</h3>
         <button
           onClick={handleExportPNG}
           style={{
